@@ -5,7 +5,7 @@ title: Home
 
 # Complex Systems and Machine Learning
 
-Welcome
+Welcome $\theta$
 
 ## Research Interests
 

@@ -1,0 +1,9 @@
+title: Oliver Kamp
+email: your.email@example.com
+description: >-
+  Academic homepage for research, teaching, publications, and projects.
+baseurl: ""
+url: "https://YOUR-USERNAME.github.io"
+markdown: kramdown
+permalink: pretty
+plugins: []

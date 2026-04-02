@@ -3,12 +3,9 @@ layout: default
 title: Home
 ---
 
-# Oliver Kamp
+# Complex Systems and Machine Learning
 
-Professor of Physics  
-University of Münster  
-
-Welcome to my academic homepage. My research focuses on complex systems, data-driven modeling, machine learning, and scientific AI.
+Welcome
 
 ## Research Interests
 
@@ -33,6 +30,6 @@ See the full list on the [Publications](/publications/) page.
 
 ## Contact
 
-Email: your.email@example.com  
+Email: okamp@uni-muenster.de 
 Office: Your office location  
 GitHub: [YOUR-USERNAME](https://github.com/YOUR-USERNAME)

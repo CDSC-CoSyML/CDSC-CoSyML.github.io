@@ -3,6 +3,8 @@ layout: default
 title: Home
 ---
 
+# Complex Systems and Machine Learning
+
 <div class="hero">
   <div class="hero-text">
     <blockquote class="tagline">"Your group's motto or research vision here."</blockquote>

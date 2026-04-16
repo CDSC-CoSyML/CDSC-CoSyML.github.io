@@ -1,9 +1,9 @@
-title: Oliver Kamp
+title: CDSC CoSyML
 email: your.email@example.com
 description: >-
   Academic homepage for research, teaching, publications, and projects.
 baseurl: ""
-url: "https://YOUR-USERNAME.github.io"
+url: "https://cdsc-cosyml.github.io/"
 markdown: kramdown
 permalink: pretty
 plugins: []

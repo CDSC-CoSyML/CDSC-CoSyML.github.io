@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{ page.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Source+Sans+3&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+  <!-- Font Awesome (for social icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Your stylesheet — loaded LAST so it overrides any theme defaults -->
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
   <!-- MathJax -->
   <script>
   window.MathJax = {
@@ -18,84 +27,98 @@
   </script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 
+
+  <!-- Hard reset: guarantee white body even if a theme CSS sneaks in -->
   <style>
-    body {
-      max-width: 850px;
-      margin: 40px auto;
-      padding: 0 20px;
-
-      font-family: 'Georgia', sans-serif;
-      font-size: 18px;
-      line-height: 1.7;
-      color: #222;
-      background: #ffffff;
-    }
-
-    /* Navigation */
-    nav {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 16px;
-      margin-bottom: 30px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #333;
-      margin-right: 15px;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    /* Headings */
-    h1, h2, h3 {
-      font-family: 'Source Sans 3', sans-serif;
-      margin-top: 30px;
-    }
-
-    h1 {
-      font-size: 32px;
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-    }
-
-    h2 {
-      font-size: 24px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 3px;
-    }
-
-    /* Links */
-    a {
-      color: #1a73e8;
-    }
-
-    /* Lists */
-    ul {
-      padding-left: 20px;
-    }
-
-    /* Subtle separation */
-    hr {
-      margin: 30px 0;
-      border: none;
-      border-top: 1px solid #eee;
-    }
+    html, body { background-color: #ffffff !important; }
   </style>
 </head>
-
 <body>
 
-<nav>
-  <a href="/">Home</a>
-  <a href="/publications">Publications</a>
-  <a href="/teaching">Teaching</a>
-  <a href="/projects">Projects</a>
-  <a href="/cv">CV</a>
-</nav>
+  <!-- ============================================================
+       HEADER (site title + subtitle)
+       Remove this block entirely if you only want the banner.
+      ============================================================ -->
+  <header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+  <a class="site-logo" href="{{ '/' | relative_url }}">
+    <img src="{{ '/assets/logo.png' | relative_url }}" alt="Logo">
+  </a>
 
-{{ content }}
+  <div class="site-text">
+    <div class="site-title">
+      <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    </div>
+    <div class="site-subtitle"> Center for Data Science and Complexity </div>
+<!-- ============================================================
+    {% if site.description %}
+    <div class="site-subtitle">{{ site.description }}</div>
+    {% endif %}
+    ============================================================ -->
+
+  </div>
+    </div>
+
+  <!-- ============================================================
+       NAVIGATION BAR
+       - First <li> is the branded home link (nav-home)
+       - Nest a <ul> inside any <li> to create a dropdown
+       ============================================================ -->
+  <nav>
+    <ul>
+      <!-- Branded home link — change text to your lab name or acronym
+      <li class="nav-home">
+        <a href="{{ '/' | relative_url }}">CDSC CoSyML</a>
+      </li>
+      -->
+      <!-- Regular nav items — edit/add/remove as needed -->
+      <li><a href="{{ '/' | relative_url }}">Home</a></li>
+
+      <li>
+        <a href="{{ '/publications' | relative_url }}">Research</a>
+        <ul>
+          <li><a href="{{ '/publications' | relative_url }}">Publications</a></li>
+          <li><a href="{{ '/projects' | relative_url }}">Projects</a></li>
+        </ul>
+      </li>
+
+      <li><a href="{{ '/teaching' | relative_url }}">Teaching</a></li>
+      <li><a href="{{ '/cv' | relative_url }}">CV</a></li>
+    </ul>
+  </nav>
+  </div>
+  </header>
+ <!-- ============================================================
+       BANNER IMAGE
+       Place your image at assets/banner_placeholder.png
+       ============================================================ -->
+  <div class="site-banner">
+    <a href="{{ '/' | relative_url }}">
+      <img src="{{ '/assets/banner_placeholder.png' | relative_url }}"
+           alt="{{ site.title }} banner">
+    </a>
+  </div>
+
+
+  <!-- ============================================================
+       MAIN CONTENT
+       {{ content }} is replaced by each page's Markdown/HTML body
+       ============================================================ -->
+  <main>
+    {{ content }}
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <p>
+      &copy; {{ site.time | date: "%Y" }}
+      {% if site.author %} {{ site.author }} {% endif %}
+      {% if site.institution %} | {{ site.institution }} {% endif %}
+    </p>
+  </footer>
 
 </body>
 </html>
